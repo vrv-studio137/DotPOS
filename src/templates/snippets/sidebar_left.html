@@ -1,0 +1,117 @@
+ <!-- left sidebar -->
+            <!-- ============================================================== -->
+            <div class="nav-left-sidebar sidebar-light">
+                <div class="menu-list">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav flex-column">
+                                <!-- <li class="nav-divider">
+                                    Menu
+                                </li> -->
+                                <!--Inventory-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-inventory" aria-controls="submenu-inventory"><i class="fas fa-fw fa-cube"></i>Inventory</a>
+                                    <!-- <a class="nav-link active" href="/inventory"><i class="fas fa-fw fa-table"></i>Inventory</a> -->
+                                    {% if PAGE_NAME == 'products' %}
+                                        <div id="submenu-inventory" class="collapse submenu show">
+                                    {% else %}
+                                        <div id="submenu-inventory" class="collapse submenu">
+                                    {% endif %}
+                                        <ul class="nav flex-column">
+                                            {% if PAGE_NAME == 'products' %}
+                                                <li class="nav-item nav-subitem active">
+                                            {% else %}
+                                                <li class="nav-item nav-subitem ">
+                                            {% endif %}
+                                                <a class="nav-link" href="/products">Products</a>
+                                            </li>
+                                            {% if PAGE_NAME == 'stockin' %}
+                                                <li class="nav-item nav-subitem active">
+                                            {% else %}
+                                                <li class="nav-item nav-subitem ">
+                                            {% endif %}
+                                                <a class="nav-link" href="/stockin">Stock In</a>
+                                            </li>
+                                        </li>
+                                        {% if PAGE_NAME == 'purchaseorder' %}
+                                            <li class="nav-item nav-subitem active">
+                                        {% else %}
+                                            <li class="nav-item nav-subitem ">
+                                        {% endif %}
+                                            <a class="nav-link" href="/purchaseorder">Purchase Orders</a>
+                                        </li>
+                                            <!-- <li class="nav-item">
+                                                <a class="nav-link" href="data-tables.html">Data Tables</a>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </li>
+                                <!--Store-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-store" aria-controls="submenu-store"><i class="fas fa-fw fa-home"></i>Store</a>
+                                    {% if PAGE_NAME == 'stores' %}
+                                        <div id="submenu-store" class="collapse submenu show">
+                                    {% else %}
+                                        <div id="submenu-store" class="collapse submenu">
+                                    {% endif %}
+                                        <ul class="nav flex-column">
+                                            {% if PAGE_NAME == 'stores' %}
+                                                <li class="nav-item active">
+                                            {% else %}
+                                                <li class="nav-item">
+                                            {% endif %}
+                                                <a class="nav-link" href="/stores">Stores</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <!--Cashier-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-cashier" aria-controls="submenu-cashier"><i class="fas fa-fw fa-shopping-basket"></i>Cashier</a>
+                                    {% if PAGE_NAME == 'cashier' %}
+                                        <div id="submenu-cashier" class="collapse submenu show">
+                                    {% else %}
+                                        <div id="submenu-cashier" class="collapse submenu">
+                                    {% endif %}
+                                        <ul class="nav flex-column">
+                                            {% if PAGE_NAME == 'cashier' %}
+                                                <li class="nav-item active">
+                                            {% else %}
+                                                <li class="nav-item">
+                                            {% endif %}
+                                                <a class="nav-link" href="/cashier">Cashier</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <!--Order-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-order" aria-controls="submenu-order"><i class="fas fa-fw fa-barcode"></i>Order</a>
+                                    {% if PAGE_NAME == 'order' %}
+                                        <div id="submenu-order" class="collapse submenu show">
+                                    {% else %}
+                                        <div id="submenu-order" class="collapse submenu">
+                                    {% endif %}
+                                        <ul class="nav flex-column">
+                                            {% if PAGE_NAME == 'order' %}
+                                                <li class="nav-item active">
+                                            {% else %}
+                                                <li class="nav-item">
+                                            {% endif %}
+                                                <a class="nav-link" href="/orders">Orders</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end left sidebar -->
+            <!-- ============================================================== -->

@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>.POS - Login</title>
+
+        <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+        <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+        
+        <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        </style>
+        
+    </head>
+    <body>
+        <div class="splash-container">
+            <div class="card ">
+                <div class="card-header text-center">
+                    <a href="../login">
+                        <h1>.POS</h1>
+                        <!-- <img class="logo-img" src="../assets/images/logo.png" alt="logo"> -->
+                    </a>
+                    <span class="splash-description">Login with your credentials</span>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input name="email" class="form-control form-control-lg" id="email" type="text" placeholder="Email" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input name="password" class="form-control form-control-lg" id="password" type="password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
+                            </label>
+                        </div>
+        
+                        {% for field in login_form %}
+                            <p>
+                                {% for error in field.errors %}
+                                <p style="color: red;">{{error}} </p>
+                                {% endfor%}
+                            </p>
+                        {% endfor %}
+                    
+                        {% if login_form.non_field_errors %}
+                            <div style="color:red">
+                                <p>{{login_form.non_field_errors}}</p>
+                            </div>
+                        {% endif %}
+        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                    </form>
+                </div>
+                <div class="card-footer bg-white p-0  ">
+                    <!-- <div class="card-footer-item card-footer-item-bordered">
+                        <a href="#" class="footer-link">Forgot Password</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <footer>
+        <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    </footer>
+</html>

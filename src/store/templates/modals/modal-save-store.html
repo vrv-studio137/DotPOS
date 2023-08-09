@@ -1,0 +1,87 @@
+<div id="modal-save-store" class="modal fade">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Save Store</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <form id="formSaveStore" action="POST">
+                    {% csrf_token %}
+                    <div class="card">
+                    
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4 class="mb-0">Information</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control form-control-sm" id="dpStatus" required="">
+                                        <option value="1">ACTIVE</option>
+                                        <option value="2">INACTIVE</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="txtStoreName">Store Name</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtStoreName" placeholder="" value="" required maxlength="50">
+                                    <div class="invalid-feedback">
+                                        Please input Store Name
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 mb-3">
+                                    <label for="txtStoreNo">Store No.</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtStoreNo" placeholder="" value="" required maxlength="50">
+                                    <div class="invalid-feedback">
+                                        Please input Product Name
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="dpType">Type</label>
+                                    <select class="form-control form-control-sm" id="dpType" required>
+                                        {% for type in storetypes %}
+                                            <option value="{{type.typeid}}">{{type.typename.strip.upper}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please Type
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtAddress">Address</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtAddress" placeholder="" value="" maxlength="200">
+                                    <div class="invalid-feedback">
+                                        Please input Address
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                          
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnClose">Close</button>
+                <button type="button" class="btn btn-primary btn-xs " id="btnSave">[F10] Save</button>
+                <button type="button" class="btn btn-primary btn-xs " id="btnSaveAndAddAnother">[F11] Save & Add Another</button>
+                <button type="button" class="btn btn-primary btn-xs" id="btnSaveAndClose">[F12] Save & Close</button>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

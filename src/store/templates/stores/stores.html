@@ -1,0 +1,124 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}.POS - Stores{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <!-- ============================================================== -->
+        <!-- hoverable table -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div id="storesQueryContainer" class="card-header sticky-header">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Store Name</span></div>
+                                        <input id="txtStoreName" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Store No</span></div>
+                                        <input id="txtStoreNo" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Type</span></div>
+                                        <select class="form-control form-control-sm" id="dpType">
+                                            <option value="0">All</option>
+                                            <option value="1">Physical</option>
+                                            <option value="2">E-Commerce</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-2 col-sm-12 col-12">
+                            <div class="input-group input-group-sm top-search-bar">
+                                <button data-toggle="dropdown" type="button" class="btn btn-secondary btn-xs dropdown-toggle float-right-force"><span class="fa fa-bars"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#modal-save-store" data-target="#modal-save-store" data-toggle="modal" data-backdrop="static" class="dropdown-item">Add Store</a>
+                                        <!-- <a href="#" class="dropdown-item">Add Product by Excel</a> -->
+                                        <!-- <div class="dropdown-divider"></div> -->
+                                        <!-- <a href="#" data-target="#modal-view-category" data-toggle="modal" class="dropdown-item">Product Category</a> -->
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tblStores" class="table table-sticky table-bordered table-hover">
+                            <thead >
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Store No.</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td class="action-col">
+                                    <div class="">
+                                        <a class="action-btn" data-toggle="dropdown" href="#"></a>
+                                        <div class="dropdown-menu">
+                                            <a href="#" class="dropdown-item">Edit</a>
+                                            <a href="#" class="dropdown-item">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end hoverable table -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+{% include '../modals/modal-save-store.html' %}
+
+
+{% endblock %}
+
+
+{% block endscript %}
+    <!--My Scripts-->
+    <script src="{% static 'myassets/libs/js/store/stores.js' %}"></script>
+
+    <script src="{% static 'myassets/libs/js/store/save-store.js' %}"></script>
+
+{% endblock %}

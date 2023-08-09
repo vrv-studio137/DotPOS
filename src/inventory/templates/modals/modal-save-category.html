@@ -1,0 +1,55 @@
+<div id="modal-save-category" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Product Category</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0 card-title">New Category</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="formSaveProductCategory" action="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="txtAddShortCode">Short Code</label>
+                                    <input type="text" class="form-control form-control-sm form-required" id="txtAddShortCode" name="shortcode" placeholder="" value="" maxlength="10" required>
+                                    <div id="shortcode-invalid" class="invalid-feedback">
+                                        Please input short code
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="txtAddCategoryname">Category</label>
+                                    <input type="text" class="form-control form-control-sm form-required" id="txtAddCategoryName" name="categoryname" placeholder="" value="" maxlength="50" required>
+                                    <div id="categoryname-invalid" class="invalid-feedback">
+                                        Please input category name
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1">Close</button> -->
+                <a id="btnClose" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal-view-category" class="btn btn-secondary btn-xs"> Close</a>
+                <button id="btnSaveAddMore" type="button" class="btn btn-primary btn-xs">[F11] Save & Add Another</button>
+                <button id="btnSaveClose" type="button" class="btn btn-primary btn-xs float-right">[F12] Save & Close</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,20 @@
+html{
+    height: 100%;
+}
+
+.dashboard-wrapper {
+    position: relative;
+    left: 0;
+    margin-left: 10px;
+    min-height: 870px !important;
+    display: flex;
+}
+
+.dashboard-content {
+    padding: 30px 30px 30px 30px;
+}
+
+.order-complete-header{
+    background-color:#9dd360;
+    color: white;
+}

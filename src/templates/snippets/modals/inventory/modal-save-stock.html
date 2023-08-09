@@ -1,0 +1,54 @@
+<div id="modal-save-stock" class="modal fade">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Save Product Price & Stock</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <div style="text-align: right;">
+                    <a href="#" class="btn btn-secondary btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-stock-history" tabindex="2" id="btnHistory">View History</a>
+                </div>
+                <form id="formSaveProductStock" action="POST">
+                    {% csrf_token %}
+
+                    <div class="table-responsive">
+                        <table id="tblProductStock" class="table table-sticky table-bordered table-hover">
+                            <thead >
+                                <tr>
+                                    <th scope="col">Store</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Discount Price</th>
+                                    <th scope="col">Threshold</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>..</td>
+                                    <td>..</td>
+                                    <td>..</td>
+                                    <td>..</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnClose">Close</button>
+                <button type="button" class="btn btn-primary btn-xs" id="btnSave">[F10] Save</button>
+                <button type="button" class="btn btn-primary btn-xs" id="btnSaveUpdateProduct">[F11] Save & Update Product</button>
+                <button type="button" class="btn btn-primary btn-xs" id="btnSaveClose">[F12] Save & Close</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

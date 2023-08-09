@@ -1,0 +1,23 @@
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky-header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 68px;
+  z-index: 1000;
+  background-color: #fff;
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
+
+  .table-sticky thead th {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 134px;
+    z-index: 999;
+    background-color: #fff;
+    border: 1px solid #e6e6f2;
+}

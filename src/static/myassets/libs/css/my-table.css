@@ -1,0 +1,55 @@
+
+.top-search-bar{
+    padding-top: 12px !important;
+    padding-right: 0 !important;
+}
+
+.action-col{
+    text-align: center;
+}
+
+.status-col{
+    text-align: center;
+}
+
+td.numeric-col{
+    text-align: right;
+}
+
+.status-success{
+    color: #5ed948;
+}
+
+.status-error{
+    color: #ff407b;
+}
+
+.status-warning{
+    color: #ffdc40;
+}
+
+.action-btn{
+    text-align: center;
+    text-decoration: underline;
+    color: #4656e9;
+}
+
+.action-btn:hover {
+    color: #ff407b;
+}
+
+.category{
+    color: white !important;
+    background-color: rgb(125 125 125);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.underlined-link{
+    text-decoration: underline;
+}
+
+.underlined-link:hover{
+    text-decoration: underline;
+}

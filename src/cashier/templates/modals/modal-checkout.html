@@ -1,0 +1,118 @@
+<div id="modal-checkout" class="modal">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Checkout</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <form id="formCheckout" action="POST">
+                    {% csrf_token %}
+                    <div class="card mb-0">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="txtInvoiceNo">Invoice No.</label>
+                                    <input type="text" class="form-control form-control" id="txtInvoiceNo" placeholder="" value="" readonly>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="txtReferenceNo">Reference No.</label>
+                                    <input type="text" class="form-control form-control" id="txtReferenceNo" placeholder="" value="" max="100" required >
+                                    <div class="invalid-feedback">
+                                        Please input Reference No.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3" >
+                                    <label for="txtOrderDate">Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="txtOrderDate" placeholder="..." required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtCustomerName">Customer Name</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">[F1]</span></div>
+                                        <input type="text" class="form-control form-control" id="txtCustomerName" placeholder="" value="" max="150">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtAddress">Address</label>
+                                    <input type="text" class="form-control form-control" id="txtAddress" placeholder="" value="" max="500"  >
+
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtTin">TIN #</label>
+                                    <input type="text" class="form-control form-control" id="txtTin" placeholder="" value="" max="20"  >
+
+                                </div>
+                            </div>
+                            <div class="row d-none">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtTotalAmount">Total Amount</label>
+                                    <input type="number" class="form-control form-control-lg" id="txtTotalAmount" placeholder="" value="0.00" readonly>
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtAmountTendered">Amount Tendered</label>
+                                    <input type="number" class="form-control form-control-lg" id="txtAmountTendered" placeholder="" value="0.00">
+                                    <div class="invalid-feedback">
+                                        Please input Amount
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" style="    text-align: center; background-color: green;color: white; padding: 6px;">
+                                        <h2 id="lblTotalAmount" style="color: white;" class="mb-0">0.00</h2>
+                                        Total Amount
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" style=" text-align: center; background-color: #ff5200; color: white; padding: 6px;">
+                                        <h2 id="lblRemainingBalance" style="color: white;" class="mb-0">0.00</h2>
+                                        Remaining Balance
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" style=" text-align: center; background-color: #ff9900; color: white; padding: 6px;">
+                                        <h2 id="lblChange" style="color: white;" class="mb-0">0.00</h2>
+                                        Change
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-md-12 mb-3 text-right">
+                                    <label class="" style="color: red;">Remaining Balance:&nbsp;</label><label id="lblRemainingBalance" style="color: red; font-size: 15pt;"></label>
+                                </div>
+                            </div> -->
+                            <div class="row d-none">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtChange">Change</label>
+                                    <input type="number" class="form-control form-control-lg" id="txtChange" placeholder="" value="0.00" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button id="btnCheckout" type="button" class="btn btn-primary w-100">
+                    [F12] CHECKOUT
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

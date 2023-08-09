@@ -1,0 +1,115 @@
+<div id="modal-save-product" class="modal fade">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Save Product</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <form id="formSaveProduct" action="POST">
+                    {% csrf_token %}
+                    <div class="card">
+                    
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4 class="mb-0">Information</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control form-control-sm" id="dpStatus" required="">
+                                        <option value="1">ACTIVE</option>
+                                        <option value="2">INACTIVE</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9 mb-3">
+                                    <label for="txtProductName">Product Name</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtProductName" placeholder="" value="" required maxlength="50">
+                                    <div class="invalid-feedback">
+                                        Please input Product Name
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="dpCategory">Category</label>
+                                    <select class="form-control form-control-sm" id="dpCategory" required>
+                                        {% for category in productcategories %}
+                                            <option value="{{category.categoryid}}">{{category.categoryname.strip.upper}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please input Category
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtsku">SKU</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtSku" placeholder="" value="" required maxlength="20">
+                                    <div class="invalid-feedback">
+                                        Please input SKU
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtshortcode">Short Code</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtShortCode" placeholder="" value="" required maxlength="10">
+                                    <div class="invalid-feedback">
+                                        Please input shortcode
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtBarcode">Barcode</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtBarcode" placeholder="" value="" maxlength="20">
+                                    <div class="invalid-feedback">
+                                        Please input Barcode
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtBrand">Brand</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtBrand" placeholder="" value="" maxlength="100">
+                                    <div class="invalid-feedback">
+                                        Please input Brand
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtDescription">Description</label>
+                                    <textarea class="form-control form-control-sm" id="txtDescription" rows="2" maxlength="100"></textarea>
+                                    <div class="invalid-feedback">
+                                        Please input Description
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Use recipe</span>
+                                    </label>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnClose">Close</button>
+                <button id="btnSaveAddMore" type="button" class="btn btn-primary btn-xs">[F10] Save & Add Another</button>
+                <button type="button" class="btn btn-primary btn-xs " id="btnSave">[F11] Save</button>
+                <button type="button" class="btn btn-primary btn-xs " id="btnSaveAndUpdateStock">[F11] Save & Update Stock</button>
+                <button type="button" class="btn btn-primary btn-xs" id="btnSaveAndClose">[F12] Save & Close</button>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

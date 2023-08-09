@@ -1,0 +1,130 @@
+<div id="modal-order-items" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">View Order</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <form id="formSaveOrder" action="POST">
+                    {% csrf_token %}
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Order Information
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4" >
+                                    <label for="txtInvoiceNo">Invoice No.</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtInvoiceNo" placeholder="..." readonly>
+                                </div>
+                                <div class="col-md-4" >
+                                    <label for="txtReferenceNo">Reference No.</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtReferenceNo" placeholder="..." required maxlength="100">
+                                </div>
+                                <div class="col-md-4" >
+                                    <label for="txtOrderDate">Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="txtOrderDate" placeholder="..." required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Customer Information
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtCustomerName">Customer Name</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtCustomerName" placeholder="" value=""  maxlength="100">
+                                    <div class="invalid-feedback">
+                                        Please input Customer Name
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 mb-3">
+                                    <label for="txtCustomerAddress">Address</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtCustomerAddress" placeholder="" value=""  maxlength="200">
+                                    <div class="invalid-feedback">
+                                        Please input Address
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtTinNo">TIN #</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtTinNo" placeholder="" value="" maxlength="20">
+                                    <div class="invalid-feedback">
+                                        Please input TIN
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table id="tblOrderItems" class="table table-sticky table-bordered table-hover">
+                                    <thead >
+                                        <tr>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Unit Price</th>
+                                            <th scope="col">Total Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td>..</td>
+                                        <td>..</td>
+                                        <td>..</td>
+                                        <td>..</td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-10 text-right">
+                                <h5>TOTAL AMOUNT:</h5>
+                            </div>
+                            <div class="col-md-2  text-right" >
+                                <h5  id="lblTotalAmount">0.00</h5>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-10 text-right">
+                               <h5>PAID AMOUNT:</h5>
+                            </div>
+                            <div class="col-md-2  text-right" >
+                                <h5 id="lblPaidAmount">0.00</h5>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-10 text-right">
+                                <h5>REMAINING BALANCE:</h5>
+                            </div>
+                            <div class="col-md-2  text-right" >
+                                <h5 id="lblRemainingBalance">0.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnClose">Close</button>
+               
+                <button type="button" class="btn btn-primary btn-xs " id="btnSave">[F12] Save</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

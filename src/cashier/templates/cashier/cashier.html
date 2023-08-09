@@ -1,0 +1,237 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>.POS - Cashier</title>
+
+        {% include 'snippets/header.html' %}
+        <link rel="stylesheet" href="{% static 'myassets/libs/css/cashier.css' %}">
+
+    </head>
+    <body>
+        <!-- ============================================================== -->
+        <!-- main wrapper -->
+        <!-- ============================================================== -->
+        <div class="dashboard-main-wrapper">
+            <!-- ============================================================== -->
+            <!-- wrapper  -->
+            <!-- ============================================================== -->
+            <div class="dashboard-wrapper">
+                <div class="container-fluid dashboard-content">
+                    <div class="row h-100">
+                       <div class="col-xl-7">
+                            <div class="card h-100">
+                                <div class="card-header" id="productQueryContainer">
+                                    <div class="row">
+                                        <div class="col-xl-2">
+                                            <div class="top-search-bar">
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-sm mb-3">
+                                                        <div class="input-group-prepend"><span class="input-group-text">[F1]</span></div>
+                                                        <select class="form-control form-control-sm" id="dpCategory">
+                                                            <option value="0">All</option>
+                                                            {% for category in productcategories %}
+                                                                <option value="{{category.categoryid}}">{{category.categoryname.strip.upper}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2">
+                                            <div class="top-search-bar">
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-sm mb-3">
+                                                        <div class="input-group-prepend"><span class="input-group-text">[F2]</span></div>
+                                                        <select class="form-control form-control-sm" id="dpSearchBy">
+                                                            <option value="0">Short Code</option>
+                                                            <option value="1">Barcode</option>
+                                                            <option value="2">SKU</option>
+                                                            <option value="3">Name</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="top-search-bar ">
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-sm mb-3">
+                                                        <div class="input-group-prepend"><span class="input-group-text">[F3]</span></div>
+                                                        <input id="txtSearchKey" type="text" placeholder="..." class="form-control">
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2">
+                                            <div class="top-search-bar ">
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-sm mb-3">
+                                                        <div class="input-group-prepend"><span class="input-group-text">[F4] Auto</span></div>
+
+                                                        <label class="switch">
+                                                            <input type="checkbox" id="chkExactMatch" name="chkExactMatch" value="0">
+                                                            <span class="slider"></span>
+                                                          </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="tblProducts" class="table table-sticky table-bordered table-hover">
+                                            <thead >
+                                                <tr>
+                                                    <th scope="col">Stock</th>
+                                                    <th scope="col">Product Name</th>
+                                                    <th scope="col">Unit Price</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td class="action-col">
+                                                    <div class="">
+                                                        <a class="action-btn" data-toggle="dropdown" href="#"></a>
+                                                        <div class="dropdown-menu">
+                                                            <a href="#" class="dropdown-item">Edit</a>
+                                                            <a href="#" class="dropdown-item">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    CART
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="tblCart" class="table table-sticky table-bordered table-hover">
+                                            <thead >
+                                                <tr>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Product</th>
+                                                    <th scope="col">Unit Price</th>
+                                                    <th scope="col">Total Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td class="action-col">
+                                                    <div class="">
+                                                        <a class="action-btn" data-toggle="dropdown" href="#"></a>
+                                                        <div class="dropdown-menu">
+                                                            <a href="#" class="dropdown-item">Edit</a>
+                                                            <a href="#" class="dropdown-item">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text"><b>TOTAL AMOUNT</b></span></div>
+                                        <input id="txtTotal" type="number" placeholder="0.00" class="form-control" value="0.00" readonly>
+                                        
+                                    </div>
+                                    <button id="btnCheckout" type="button" class="btn btn-primary btn-lg w-100">
+                                        [F11] PROCEED TO CHECKOUT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                    <div id='modalConfirmation' class="modal fade">
+                        <div class="modal-dialog modal-xs">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="">Confirmation</h5>
+                                    <span class="close" data-dismiss="modal">&times;</span>
+                                </div>
+                                <div class="modal-body" style="text-align: center;">
+                                    <div id="modalMessage" class="mb-5">
+                                        Confirm action?
+                                    </div>
+                                    <!-- <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnCancel">No</button> -->
+                                    <button type="button" class="btn btn-primary btn-xs " id="btnConfirm">Yes</button>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='modalChange' class="modal fade">
+                        <div class="modal-dialog modal-xs">
+                            <div class="modal-content">
+                                <div class="modal-header order-complete-header">
+                                    <h5 class="modal-title" id=""></h5>
+                                    <span class="close" data-dismiss="modal">&times;</span>
+                                </div>
+                                <div class="modal-body" style="text-align: center;">
+                                    <span><i class="fa fa-solid fa-check" style="font-size: 50pt; color: #9dd360;"></i></span>
+                                    <h2 id="">Order Complete</h4>
+                                    <h4 class="mb-0" id="">Change:</h4>
+                                    <h2 id="lblChange">0.00</h2>
+                                    <!-- <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnCancel">No</button> -->
+            
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary btn-xs w-100" data-dismiss="modal" id="btnConfirm">Confirm</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% include '../modals/modal-quantity.html' %}
+                    {% include '../modals/modal-checkout.html' %}
+                    {% include 'snippets/modals/inventory/modal-save-stock.html' %}
+                    {% include 'snippets/modals/inventory/modal-stock-history.html' %}
+                </div>
+
+            </div>
+        </div>
+       
+        <!-- ============================================================== -->
+        <!-- end main wrapper -->
+        <!-- ============================================================== -->
+
+        
+    </body>
+    
+
+    {% include 'snippets/footer.html' %}
+
+    {% block endscript %}
+    <script src="{% static 'myassets/libs/js/cashier/cashier.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/cashier/add-quantity.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/cashier/checkout.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/save-product-stock.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/stock-history.js' %}"></script>
+
+    {% endblock %}
+    
+</html>

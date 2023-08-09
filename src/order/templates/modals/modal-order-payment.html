@@ -1,0 +1,106 @@
+<div id="modal-order-payment" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Payment History</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success text-center d-none" role="alert">
+                    <div class="alert-text"></div>
+                </div>
+                <form id="formSavePayment" action="POST">
+                    {% csrf_token %}
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Add payment
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6" >
+                                    <label for="txtInvoiceNo">Invoice No.</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtInvoiceNo" placeholder="..." readonly>
+                                </div>
+                                <div class="col-md-6" >
+                                    <label for="txtReferenceNo">Reference No.</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtReferenceNo" placeholder="..." readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4" >
+                                    <label for="txtRemainingBalance">Remaining Balance</label>
+                                    <input type="number" class="form-control form-control-sm" id="txtRemainingBalance" placeholder="0.00" readonly>
+                                </div>
+                                <div class="col-md-4" >
+                                    <label for="txtPayment">Payment Amount</label>
+                                    <input type="number" class="form-control form-control-sm" id="txtPayment" placeholder="0.00" required>
+                                </div>
+                                <div class="col-md-4" >
+                                    <label for="txtPaymentDate">Payment Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="txtPaymentDate" placeholder="..." required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-right">
+                            <button type="button" class="btn btn-primary btn-xs " id="btnSave">[F12] Save</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table id="tblOrderPayment" class="table table-sticky table-bordered table-hover">
+                                    <thead >
+                                        <tr>
+                                            <th></th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td>..</td>
+                                        <td>..</td>
+                                        <td>..</td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-10 text-right">
+                                <h5>TOTAL ORDER AMOUNT:</h5>
+                            </div>
+                            <div class="col-md-2  text-right" >
+                                <h5  id="lblTotalAmount">0.00</h5>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-10 text-right">
+                               <h5>TOTAL PAID AMOUNT:</h5>
+                            </div>
+                            <div class="col-md-2  text-right" >
+                                <h5 id="lblPaidAmount">0.00</h5>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-10 text-right">
+                                <h5>REMAINING BALANCE:</h5>
+                            </div>
+                            <div class="col-md-2  text-right" >
+                                <h5 id="lblRemainingBalance">0.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnClose">Close</button>               
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

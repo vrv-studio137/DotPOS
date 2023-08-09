@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>{% block title %}{% endblock %}</title>
+
+       {% include 'snippets/header.html' %}
+
+    </head>
+    <body>
+        <!-- ============================================================== -->
+        <!-- main wrapper -->
+        <!-- ============================================================== -->
+        <div class="dashboard-main-wrapper">
+            {% include 'snippets/sidebar_left.html' %}
+            <!-- ============================================================== -->
+            <!-- wrapper  -->
+            <!-- ============================================================== -->
+            <div class="dashboard-wrapper">
+                <div class="container-fluid dashboard-content">
+                    {% include 'snippets/page_header.html' %}
+                    {% block content %}
+                    {% endblock content %}
+                    
+                    <div id='modalConfirmation' class="modal fade">
+                        <div class="modal-dialog modal-xs">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="">Confirmation</h5>
+                                    <span class="close" data-dismiss="modal">&times;</span>
+                                </div>
+                                <div class="modal-body" style="text-align: center;">
+                                    <div id="modalMessage" class="mb-5">
+                                        Confirm action?
+                                    </div>
+                                    <!-- <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1" id="btnCancel">No</button> -->
+                                    <button type="button" class="btn btn-primary btn-xs " id="btnConfirm">Yes</button>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- ============================================================== -->
+        <!-- end main wrapper -->
+        <!-- ============================================================== -->
+
+        
+    </body>
+    
+    {% include 'snippets/footer.html' %}
+
+    {% block endscript %}
+    {% endblock %}
+    
+</html>

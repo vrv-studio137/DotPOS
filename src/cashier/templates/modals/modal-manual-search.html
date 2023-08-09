@@ -1,0 +1,106 @@
+<div id="modal-manual-search" class="modal fade">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Manual Seach</h5>
+    
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="top-search-bar">
+                                    <div class="form-group">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend"><span class="input-group-text">SKU</span></div>
+                                            <input id="txtSku" type="text" placeholder="..." class="form-control">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="top-search-bar">
+                                    <div class="form-group">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend"><span class="input-group-text">Short Code</span></div>
+                                            <input id="txtShortCode" type="text" placeholder="..." class="form-control">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="top-search-bar">
+                                    <div class="form-group">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend"><span class="input-group-text">Name</span></div>
+                                            <input id="txtProductName" type="text" placeholder="..." class="form-control">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="top-search-bar">
+                                    <div class="form-group">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend"><span class="input-group-text">Category</span></div>
+                                            <select class="form-control form-control-sm" id="dpCategory">
+                                                <option value="0">All</option>
+                                                {% for category in productcategories %}
+                                                    <option value="{{category.categoryid}}">{{category.categoryname.strip.upper}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table id="tblProductCategory" class="table table-sticky table-bordered table-hover">
+                                    <thead >
+                                        <tr>
+                                            <th></th>
+                                            <th scope="col">Short Code</th>
+                                            <th scope="col">Category Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="action-col">
+                                                <div class="">
+                                                    <a class="action-btn" data-toggle="dropdown" href="#">Actions</a>
+                                                    <div class="dropdown-menu">
+                                                        <a href="#" class="dropdown-item">Edit</a>
+                                                        <a href="#" class="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>..</td>
+                                            <td>..</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal" tabindex="1">Close</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

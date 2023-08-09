@@ -1,0 +1,171 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}.POS - Orders{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <!-- ============================================================== -->
+        <!-- hoverable table -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div id="ordersQueryContainer" class="card-header sticky-header">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Store</span></div>
+                                        <select class="form-control form-control-sm" id="dpStore">
+                                            {% for store in stores %}
+                                                <option value="{{store.storeid}}">{{store.storename.strip.upper}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Invoice no.</span></div>
+                                        <input id="txtInvoiceNo" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Reference no.</span></div>
+                                        <input id="txtReferenceNo" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Status</span></div>
+                                        <select class="form-control form-control-sm" id="dpOrderStatus">
+                                            <option value="0">All</option>
+                                            <option value="2">Paid</option>
+                                            <option value="1">Unpaid</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-1 col-lg-12 col-md-2 col-sm-12 col-12">
+                            <div class="input-group input-group-sm top-search-bar">
+                                <button data-toggle="dropdown" type="button" class="btn btn-secondary btn-xs dropdown-toggle float-right-force"><span class="fa fa-bars"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#modal-save-store" data-target="#modal-save-store" data-toggle="modal" data-backdrop="static" class="dropdown-item">Add Store</a>
+                                        <!-- <a href="#" class="dropdown-item">Add Product by Excel</a> -->
+                                        <!-- <div class="dropdown-divider"></div> -->
+                                        <!-- <a href="#" data-target="#modal-view-category" data-toggle="modal" class="dropdown-item">Product Category</a> -->
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">From</span></div>
+                                        <input id="txtDateFrom" type="date"  class="form-control">
+                                        <div class="input-group-prepend"><span class="input-group-text">To</span></div>
+                                        <input id="txtDateTo" type="date" class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Customer name</span></div>
+                                        <input id="txtCustomerName" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tblOrders" class="table table-sticky table-bordered table-hover">
+                            <thead >
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">Store</th>
+                                    <th scope="col">Invoice No. | Reference No.</th>
+                                    <th scope="col">Customer Details</th>
+                                    <th scope="col">Total<br>Amount</th>
+                                    <th scope="col">Remaining<br>Balance</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td class="action-col">
+                                    <div class="">
+                                        <a class="action-btn" data-toggle="dropdown" href="#"></a>
+                                        <div class="dropdown-menu">
+                                            <a href="#" class="dropdown-item">Edit</a>
+                                            <a href="#" class="dropdown-item">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end hoverable table -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+{% include '../modals/modal-order-items.html' %}
+{% include '../modals/modal-order-payment.html' %}
+
+{% endblock %}
+
+
+{% block endscript %}
+    <!--My Scripts-->
+    <script src="{% static 'myassets/libs/js/order/orders.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/order/order-items.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/order/order-payment.js' %}"></script>
+
+{% endblock %}

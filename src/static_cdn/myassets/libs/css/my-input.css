@@ -1,0 +1,8 @@
+.form-required{
+    border-right-width: medium;
+    border-right-color: #f0346e;
+}
+
+input[type=number]{
+    text-align: right;
+}

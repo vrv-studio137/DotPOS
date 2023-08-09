@@ -1,0 +1,200 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}.POS - Inventory{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <!-- ============================================================== -->
+        <!-- hoverable table -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div id="productQueryContainer" class="card-header sticky-header">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Store</span></div>
+                                        <select class="form-control form-control-sm" id="dpStore">
+                                            {% for store in stores %}
+                                                <option value="{{store.storeid}}">{{store.storename.strip.upper}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">SKU</span></div>
+                                        <input id="txtSku" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Name</span></div>
+                                        <input id="txtProductName" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Code</span></div>
+                                        <input id="txtShortCode" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-1 col-lg-12 col-md-2 col-sm-12 col-12">
+                            <div class="input-group input-group-sm top-search-bar">
+                                <button data-toggle="dropdown" type="button" class="btn btn-secondary btn-xs dropdown-toggle float-right-force"><span class="fa fa-bars"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#modal-save-product" data-target="#modal-save-product" data-toggle="modal" data-backdrop="static" class="dropdown-item">Add Product</a>
+                                        <!-- <a href="#" class="dropdown-item">Add Product by Excel</a> -->
+                                        <div class="dropdown-divider"></div>
+                                        <a href="#" data-target="#modal-view-category" data-toggle="modal" class="dropdown-item">Product Category</a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Category</span></div>
+                                        <select class="form-control form-control-sm" id="dpCategory">
+                                            <option value="0">All</option>
+                                            {% for category in productcategories %}
+                                                <option value="{{category.categoryid}}">{{category.categoryname.strip.upper}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Barcode</span></div>
+                                        <input id="txtBarcode" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Brand</span></div>
+                                        <input id="txtBrand" type="text" placeholder="..." class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="top-search-bar">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Sort by</span></div>
+                                        <select class="form-control form-control-sm" id="dpSortBy">
+                                            <option value="0">Product Name</option>
+                                            <option value="1">Quantity</option>
+                                            <option value="2">Date Added</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tblProducts" class="table table-sticky table-bordered table-hover">
+                            <thead >
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">SKU</th>
+                                    <th scope="col">Barcode</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Store</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td class="action-col">
+                                    <div class="">
+                                        <a class="action-btn" data-toggle="dropdown" href="#"></a>
+                                        <div class="dropdown-menu">
+                                            <a href="#" class="dropdown-item">Edit</a>
+                                            <a href="#" class="dropdown-item">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end hoverable table -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+{% include '../modals/modal-save-product.html' %}
+{% include '../modals/modal-save-category.html' %}
+{% include '../modals/modal-view-category.html' %}
+{% include '../modals/modal-product-history.html' %}
+{% include 'snippets/modals/inventory/modal-save-stock.html' %}
+{% include 'snippets/modals/inventory/modal-stock-history.html' %}
+{% include '../modals/modal-category-history.html' %}
+
+
+{% endblock %}
+
+
+{% block endscript %}
+    <!--My Scripts-->
+    <script src="{% static 'myassets/libs/js/inventory/products.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/save-product.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/view-product-category.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/save-product-category.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/save-product-stock.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/product-history.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/stock-history.js' %}"></script>
+    <script src="{% static 'myassets/libs/js/inventory/category-history.js' %}"></script>
+
+{% endblock %}
